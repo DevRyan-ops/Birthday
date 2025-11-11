@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- 
+  Page 3: Cake & Final Message
+-->
+<div class="page active p-8 bg-gradient-to-br from-gray-900 to-purple-900">
+    
+    <!-- Confetti container -->
+    <div id="confetti-container"></div>
+
+    <div class="text-center max-w-lg z-10">
+        
+        <!-- The CSS Cake -->
+        <div class="cake-wrapper">
+            <div class="cake">
+                <div class="cake-top"></div>
+                <div class="cake-icing"></div>
+                <div class="cake-icing-drip"></div>
+            </div>
+            <div class="cake-plate"></div>
+            
+            <!-- Candles -->
+            <div class="candle candle-1">
+                <div class="candle-flame"></div>
+            </div>
+            <div class="candle candle-2">
+                <div class="candle-flame"></div>
+            </div>
+            <div class="candle candle-3">
+                <div class="candle-flame"></div>
+            </div>
+        </div>
+        
+        <!-- Personalized Message (Data from Flask) -->
+        <h1 id="nameOutput" class="text-5xl md:text-7xl font-black text-transparent bg-clip-text bg-gradient-to-r from-pink-400 to-purple-400 mb-4">
+            Happy Birthday, {{ name }}!
+        </h1>
+        <h2 id="ageOutput" class="text-3xl md:text-4xl font-bold text-gray-200">
+            We're so happy to celebrate your {{ age_string }}! Birthday
+        </h2>
+    </div>
+
+    <!-- Go Back Button (links to /messages route) -->
+    <a href="{{ url_for('messages') }}" class="absolute bottom-10 left-10 text-gray-400 hover:text-white transition-colors z-20">
+        &larr; Go Back
+    </a>
+</div>
+
+<!-- Load and run the confetti script -->
+<script src="{{ url_for('static', filename='js/script.js') }}"></script>
+<script>
+    // Start the confetti as soon as the page loads
+    startConfetti();
+</script>
+{% endblock %}
